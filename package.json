@@ -4,7 +4,9 @@
   "description": ":nut_and_bolt: :key: :pushpin: :microscope:",
   "main": "index.js",
   "scripts": {
-    "rollup": "browserify -t rollupify rollup/index.js > rollup/dist_bundle.js",
+    "fileSize": "ls -lh rollup/dist_bundle.js | awk -F ' ' {'print $5'}",
+    "rollup": "rollup -c && npm run fileSize",
+    "rollup:browserify": "browserify -t [ rollupify --config browserify-rollup.config.js ] rollup/index.js > rollup/dist_bundle.js && npm run fileSize",
     "rollup:watch": "watchify -t rollupify rollup/index.js -o rollup/bundle.js -v",
     "serve": "serve"
   },
@@ -20,9 +22,14 @@
   "homepage": "https://github.com/zzarcon/dev-setup#readme",
   "dependencies": {
     "browserify": "^13.1.0",
+    "d3": "^4.2.5",
     "growy": "^0.1.3",
+    "rollup-plugin-node-resolve": "^2.0.0",
     "rollupify": "^0.3.4",
     "serve": "^1.4.0",
     "watchify": "^3.7.0"
+  },
+  "devDependencies": {
+    "rollup-plugin-babel": "^2.6.1"
   }
 }

@@ -1,4 +1,6 @@
 import a from './a';
-import Growy from 'growy';
+// import Growy from 'growy';
+import {scaleLinear} from 'd3';
 
-a();
+
+console.log(scaleLinear);
