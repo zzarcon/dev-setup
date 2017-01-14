@@ -7,7 +7,9 @@
     "fileSize": "ls -lh rollup/dist_bundle.js | awk -F ' ' {'print $5'}",
     "rollup": "rollup -c && npm run fileSize",
     "rollup:browserify": "browserify -t [ rollupify --config browserify-rollup.config.js ] rollup/index.js > rollup/dist_bundle.js && npm run fileSize",
-    "rollup:watch": "watchify -t rollupify rollup/index.js -o rollup/bundle.js -v",
+    "rollup:skate": "browserify -t [ rollupify --config browserify-rollup.config.js ] rollup/skate-demo.js > rollup/skate-bundle.js",
+    "rollup:watch": "watchify -t [ rollupify --config browserify-rollup.config.js ] rollup/index.js -o rollup/bundle.js -v",
+    "rollup:watch:skate": "watchify -t [ rollupify --config browserify-rollup.config.js ] rollup/skate-demo.js -o rollup/skate-bundle.js -v",
     "serve": "serve"
   },
   "repository": {
@@ -27,9 +29,12 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollupify": "^0.3.4",
     "serve": "^1.4.0",
+    "skatejs": "^4.4.1",
+    "skatejs-web-components": "^5.0.1",
     "watchify": "^3.7.0"
   },
   "devDependencies": {
-    "rollup-plugin-babel": "^2.6.1"
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^5.0.5"
   }
 }
